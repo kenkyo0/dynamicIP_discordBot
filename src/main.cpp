@@ -16,7 +16,7 @@ int main () {
 
     json config = json::parse(ifs);
     const string BOT_TOKEN = config["bot_token"].get<string>();
-    const int SERVER_ID = config["server_id"];
+    const dpp::snowflake SERVER_ID = config["server_id"].get<dpp::snowflake>();
     string ip_fpath = config["gameserver"]["ip_file"];
     
     cout << "Bot is starting...\n";
@@ -37,7 +37,7 @@ int main () {
         }
     });
 
-    bot.on_ready([&bot, SERVER_ID](const dpp::ready_t& event) {
+    bot.on_ready([&bot, SERVER_ID](const dpp::ready_t & event) {
 
             if (dpp::run_once<struct clear_bot_commands>()) {
 	            /* clear our commands */
@@ -48,7 +48,7 @@ int main () {
 	        if (dpp::run_once<struct register_bot_commands>()) {
                 /* Create and register a command when the bot is ready */
                 dpp::slashcommand mc_info("mc", "Send a embed with server ip!", bot.me.id);
-                bot.guild_command_create({mc_info}, SERVER_ID);
+                bot.guild_command_create(mc_info, SERVER_ID);
 	        }
 	});
 
