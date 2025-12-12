@@ -13,6 +13,11 @@ std::string exec_shell_cmd(const std::string cmd){
     FILE *fp;
     char buf[128];
     std::string result = "";
+    
+    if(cmd.find("rm", 0)!=std::string::npos){
+        return "config error";
+    }
+
     fp = popen(cmd.c_str(), "r");
     while((fgets(buf, 128, fp)) != NULL){
         result += buf;
@@ -26,7 +31,7 @@ std::string exec_shell_cmd(const std::string cmd){
 /*This function gets the public ip of the system on which the bot is running on*/
 std::string get_dIP(bool ipv6){
     // get public ip with curl
-    const std::string cmd = (ipv6) ? "curl -s -6 icanhazip.com" : "curl -s -6 icanhazip.com";
+    const std::string cmd = (ipv6) ? "curl -s -6 icanhazip.com" : "curl -s -4 icanhazip.com";
     return exec_shell_cmd(cmd);
 }
 

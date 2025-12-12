@@ -20,7 +20,7 @@ Requirements for your server, where your bot should running on.
 6. on your current screen should be now some personal configuration options like name, description, icon ... 
 click on 'Reset Token' to create your Bot-Token
 
-***Please don't share this token. You can store NOW the token in a passwort-manager. If you ever somehow compromise your current bot token or see your bot in danger, you can regenerate the token in the panel.*** 
+***Please don't share this token. You can store the token in a passwort-manager NOW. If you ever somehow compromise your current bot token or see your bot in danger, you can regenerate the token in the panel.*** 
 
 ### Get the Bot on your Discord server:
 7. go to the [application page](https://discord.com/developers/applications) from Discord of your Bot (click on your Bot under 'My Applications')
@@ -56,6 +56,7 @@ You should have your BOT-TOKEN. You get the Discord Server ID by clicking 'right
 **start your bot**
 ```bash
 cd build/
+make
 ./Dynamic_DiscordBot
 ```
 If everything went the right way, you should see your Bot online on Discord.
