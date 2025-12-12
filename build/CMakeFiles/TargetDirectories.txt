@@ -1,0 +1,3 @@
+/Users/nickschmidt/dev/dynamicIP_discordBot/build/CMakeFiles/DynamikIP_ServerBot.dir
+/Users/nickschmidt/dev/dynamicIP_discordBot/build/CMakeFiles/edit_cache.dir
+/Users/nickschmidt/dev/dynamicIP_discordBot/build/CMakeFiles/rebuild_cache.dir

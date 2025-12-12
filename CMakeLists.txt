@@ -23,6 +23,7 @@ Perfect for a Minecraft-Server, if you don't want to buy a Domain-Name.
 	 # Include the DPP directories.
 	 target_include_directories(${PROJECT_NAME} PRIVATE
 	     ${DPP_INCLUDE_DIR}
+         include
 	 )
 	  
 	 # Set C++ version
