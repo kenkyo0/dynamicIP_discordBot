@@ -1,38 +1,63 @@
+#include "serverI.h"
 #include <iostream>
 #include <stdio.h>
 #include <dpp/dpp.h>
-#include <fstream>
 #include "json.hpp"
+#include <string>
+#include <vector>
+#include <fstream>
 
 using namespace std;
-ifstream ifs ("../config.json");
 using json = nlohmann::json;
 
 int main () {
+    
+    cout << "Bot is starting...\n";
 
+    // read config.json 
+    ifstream ifs ("../config.json");
     if(!ifs){
         cerr << "error at input-stream: config.json";
     }
 
     json config = json::parse(ifs);
-    const string BOT_TOKEN = config["bot_token"].get<string>();
+    const std::string BOT_TOKEN = config["bot_token"].get<string>();
     const dpp::snowflake SERVER_ID = config["server_id"].get<dpp::snowflake>();
-    string ip_fpath = config["gameserver"]["ip_file"];
-    
-    cout << "Bot is starting...\n";
-    
+    bool ipv6b = config["gameserver"]["ipv6"].get<bool>();
+    const std::string port = config["gameserver"]["port"].get<std::string>();
+
+
     // set up the bot
     dpp::cluster bot(BOT_TOKEN);
     bot.on_log(dpp::utility::cout_logger());
     
     // event trigger
-    bot.on_slashcommand([&bot](const dpp::slashcommand_t & event){
-        if(event.command.get_command_name() == "mc"){
-            dpp::embed mc_info = dpp::embed()
-                .set_color(dpp::colors::sti_blue)
-                .set_title("mc_flock server ip");
+    bot.on_slashcommand([&bot, ipv6b, port](const dpp::slashcommand_t & event){
 
-            dpp::message msg(event.command.channel_id, mc_info);
+        if(event.command.get_command_name() == "info"){
+
+            string ip = get_dIP(ipv6b);
+            string player_num = conn_player_num(port);
+
+            dpp::embed info = dpp::embed()
+                .set_color(0x58D68D) // Mint-Grün
+                .set_title("welcome in the flock of joy :)")
+                .set_description("follow the link, before you join")
+                .add_field(
+                        "vibe-check link:",
+                        "https://youtu.be/cIMKJ43TFLs?si=ru75W1TJV08EvrhC",
+                        true
+                )
+                .add_field(
+                        "IP:",
+                        ip
+                )
+                .add_field(
+                        "Player Online:",
+                        player_num
+                );
+
+            dpp::message msg(event.command.channel_id, info);
             event.reply(msg);
         }
     });
@@ -47,8 +72,8 @@ int main () {
 
 	        if (dpp::run_once<struct register_bot_commands>()) {
                 /* Create and register a command when the bot is ready */
-                dpp::slashcommand mc_info("mc", "Send a embed with server ip!", bot.me.id);
-                bot.guild_command_create(mc_info, SERVER_ID);
+                dpp::slashcommand info("info", "Send a embed with server informations!", bot.me.id);
+                bot.guild_command_create(info, SERVER_ID);
 	        }
 	});
 

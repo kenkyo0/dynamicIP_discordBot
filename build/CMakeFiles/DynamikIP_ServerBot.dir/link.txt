@@ -1,1 +1,1 @@
-/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/DynamikIP_ServerBot.dir/src/main.cpp.o -o DynamikIP_ServerBot  /opt/homebrew/lib/libdpp.dylib
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/DynamikIP_ServerBot.dir/src/main.cpp.o CMakeFiles/DynamikIP_ServerBot.dir/src/serverI.cpp.o -o DynamikIP_ServerBot  /opt/homebrew/lib/libdpp.dylib

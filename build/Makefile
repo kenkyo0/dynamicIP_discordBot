@@ -153,6 +153,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DynamikIP_ServerBot.dir/build.make CMakeFiles/DynamikIP_ServerBot.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/serverI.o: src/serverI.cpp.o
+.PHONY : src/serverI.o
+
+# target to build an object file
+src/serverI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DynamikIP_ServerBot.dir/build.make CMakeFiles/DynamikIP_ServerBot.dir/src/serverI.cpp.o
+.PHONY : src/serverI.cpp.o
+
+src/serverI.i: src/serverI.cpp.i
+.PHONY : src/serverI.i
+
+# target to preprocess a source file
+src/serverI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DynamikIP_ServerBot.dir/build.make CMakeFiles/DynamikIP_ServerBot.dir/src/serverI.cpp.i
+.PHONY : src/serverI.cpp.i
+
+src/serverI.s: src/serverI.cpp.s
+.PHONY : src/serverI.s
+
+# target to generate assembly for a file
+src/serverI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DynamikIP_ServerBot.dir/build.make CMakeFiles/DynamikIP_ServerBot.dir/src/serverI.cpp.s
+.PHONY : src/serverI.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +189,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/serverI.o"
+	@echo "... src/serverI.i"
+	@echo "... src/serverI.s"
 .PHONY : help
 
 

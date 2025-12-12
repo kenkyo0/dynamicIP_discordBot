@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nickschmidt/dev/dynamicIP_discordBot/src/main.cpp" "CMakeFiles/DynamikIP_ServerBot.dir/src/main.cpp.o" "gcc" "CMakeFiles/DynamikIP_ServerBot.dir/src/main.cpp.o.d"
+  "/Users/nickschmidt/dev/dynamicIP_discordBot/src/serverI.cpp" "CMakeFiles/DynamikIP_ServerBot.dir/src/serverI.cpp.o" "gcc" "CMakeFiles/DynamikIP_ServerBot.dir/src/serverI.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

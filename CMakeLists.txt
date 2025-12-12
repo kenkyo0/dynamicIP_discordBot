@@ -10,6 +10,7 @@ Perfect for a Minecraft-Server, if you don't want to buy a Domain-Name.
 	 # Create an executable
 	 add_executable(${PROJECT_NAME}
 	     src/main.cpp
+         src/serverI.cpp
 	 )
 	  
 	 # Find our pre-installed DPP package (using FindDPP.cmake).
