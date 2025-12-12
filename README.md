@@ -22,7 +22,7 @@ click on 'Reset Token' to create your Bot-Token
 
 ***Please don't share this token. You can store NOW the token in a passwort-manager. If you ever somehow compromise your current bot token or see your bot in danger, you can regenerate the token in the panel.*** 
 
-### Get the Bot on your server:
+### Get the Bot on your Discord server:
 7. go to the [application page](https://discord.com/developers/applications) from Discord of your Bot (click on your Bot under 'My Applications')
 8. open the tab 'OAuth2' > 'URL Generator'
 9. tick the scope 'bot' and then tick the permissions: Manage Channels, Send Messages, Embed Links
@@ -34,12 +34,33 @@ click on 'Reset Token' to create your Bot-Token
 Execute the following set-up lines on your servers shell.
 ```bash
 git clone https://github.com/kenkyo0/dynamicIP_discordBot.git
-cd dynamicIP_ServerBot/build
-cmake ..
-cd ..
+cd dynamicIP_discordBot/build
+cmake ../
+cd ../
 cmake --build build/ -j4
+touch config.json
 ```
-now go into the build/ directorie and start the Bot.
+edit the file config.json with your specification like this:
+```json
+{
+    "bot_token": "<Your BOT-TOKEN>",
+    "server_id": <your server ID>,
+    "gameserver": {
+        "ipv6": true,
+        "port": "25565"
+    }
+}
+```
+You should have your BOT-TOKEN. You get the Discord Server ID by clicking 'right click' on your server name on the top left in discord, while being on your server.
 
+**start your bot**
+```bash
+cd build/
+./Dynamic_DiscordBot
+```
 If everything went the right way, you should see your Bot online on Discord.
-You also should be able to run the discord command /info now, if the command not works restart the bot or if it still doesn't execute the command, check the bot permissions.
+stop your bot with ctrl-c.
+You might have to wait a few minutes or seconds after the first start and stop of your bot, before the command /info is working. (Discord API is a bit slow)
+Then start your bot again and check if the command /info is working.
+
+If the command not works restart the bot or if it still doesn't execute the command after some minutes, check the bot permissions you've set.

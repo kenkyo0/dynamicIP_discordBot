@@ -1,9 +1,0 @@
-{
-    "bot_token": "<Your Bot Token>",
-    "server_id": <Your Server ID(int)>,
-    "gameserver": {
-        "ip_file": "current_ip.txt",
-        "port1": 25565
-    }
-}
-
