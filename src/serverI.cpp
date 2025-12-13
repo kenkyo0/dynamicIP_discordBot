@@ -14,10 +14,6 @@ std::string exec_shell_cmd(const std::string cmd){
     char buf[128];
     std::string result = "";
     
-    if(cmd.find("rm", 0)!=std::string::npos){
-        return "config error";
-    }
-
     fp = popen(cmd.c_str(), "r");
     while((fgets(buf, 128, fp)) != NULL){
         result += buf;
