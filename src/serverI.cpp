@@ -22,7 +22,7 @@
 std::string get_dIP(bool ipv6){
     
     // get public ip with a TCP Stream http request
-    const char *url = ipv6 ? "ipv6.icanhayip.com" : "ipv4.icanhazip.com";
+    const char *url = ipv6 ? "ipv6.icanhazip.com" : "ipv4.icanhazip.com";
     const char *port = "80";
 
     addrinfo info{}, *res; // from netdb.h include
@@ -53,7 +53,7 @@ std::string get_dIP(bool ipv6){
      std::string response;
      ssize_t size;
 
-     while((size = recv(sockfd, buf, sizeof(buf), 0)) < 0){
+     while((size = recv(sockfd, buf, sizeof(buf), 0)) > 0){
         response.append(buf, size);
      }
 
@@ -116,9 +116,9 @@ int conn_player_num(const int port, bool ipv6){
             }
         }
 
-        if(correctp && count == 3){
+        if((correctp) && (count == 3)){
             p += 6; // skip the dest. port
-            if(std::strncmp(p, status, 3)){
+            if(std::strncmp(p, status, 2)){
                 conns++;
             }
             correctp = false;

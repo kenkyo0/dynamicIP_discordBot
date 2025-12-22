@@ -25,7 +25,7 @@ int main () {
     const std::string BOT_TOKEN = config["bot_token"].get<string>();
     const dpp::snowflake SERVER_ID = config["server_id"].get<dpp::snowflake>();
     bool ipv6b = config["gameserver"]["ipv6"].get<bool>();
-    const int port = config["gameserver"]["port"].get<int>;
+    const int port = config["gameserver"]["port"].get<int>();
 
 
     // set up the bot
@@ -55,7 +55,7 @@ int main () {
                 )
                 .add_field(
                         "Player Online:",
-                        player_num
+                        to_string(player_num)
                 );
 
             dpp::message msg(event.command.channel_id, info);
