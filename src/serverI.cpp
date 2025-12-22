@@ -4,6 +4,13 @@
  * such as the current public ip or the number of active clients by a specific port
  * */
 #include "serverI.h"
+#include <cstddef>
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
+#include <iomanip>
+#include <ios>
+#include <sstream>
 #include <sys/socket.h>
 #include <netdb.h>
 #include <sys/types.h>
@@ -60,6 +67,63 @@ std::string get_dIP(bool ipv6){
      return ip;
 }
 
-std::string conn_player_num(const std::string port){
-    return exec_shell_cmd("lsof -i :"+port+"| grep -v 'COMMAND' | wc -l");
+int conn_player_num(const int port, bool ipv6){
+
+    std::string path= ipv6 ? "/proc/net/tcp6" : "/proc/net/tcp";
+    std::ifstream ifs (path);
+    if(!ifs.is_open()){
+        return 0;
+    }
+
+    // reading file
+    std::stringstream ss;
+    ss << ifs.rdbuf();
+    std::string content = ss.str();
+
+    // prepare parsing 
+    const char *p; 
+    int count = 0;
+    bool scan = false;
+    bool correctp = false;
+    int conns = 0;
+
+        // port to hex
+    char hexport[5];
+    std::stringstream stream;
+    //stream << std::uppercase << std::hex << std::setw(4) << std::setfill('0') << port;
+    stream << std::uppercase << std::hex << port;
+    stream.write(hexport, 4);
+    hexport[4] = '\0';
+
+        // defined status : active connection
+    const char status[3] = "01"; 
+    
+    // start parsing
+    for(p = content.c_str(); *p != 0; p++){
+        // prepare overlapping
+        if(count != 0 && *p == '\n'){
+            count = 0;
+            correctp = false;
+        }
+        // getting port and status
+        if(*p == ':'){
+            count++;
+        }
+        if(count == 2){
+            p++;
+            if(std::strncmp(p, hexport, 4)){
+                correctp = true;
+            }
+        }
+
+        if(correctp && count == 3){
+            p += 6; // skip the dest. port
+            if(std::strncmp(p, status, 3)){
+                conns++;
+            }
+            correctp = false;
+        }
+    }
+    
+    return conns;
 }

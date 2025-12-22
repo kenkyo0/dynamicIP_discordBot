@@ -1,4 +1,5 @@
 #include "serverI.h"
+#include <cstddef>
 #include <iostream>
 #include <stdio.h>
 #include <dpp/dpp.h>
@@ -24,7 +25,7 @@ int main () {
     const std::string BOT_TOKEN = config["bot_token"].get<string>();
     const dpp::snowflake SERVER_ID = config["server_id"].get<dpp::snowflake>();
     bool ipv6b = config["gameserver"]["ipv6"].get<bool>();
-    const std::string port = config["gameserver"]["port"].get<std::string>();
+    const int port = config["gameserver"]["port"].get<int>;
 
 
     // set up the bot
@@ -37,7 +38,7 @@ int main () {
         if(event.command.get_command_name() == "info"){
 
             string ip = get_dIP(ipv6b);
-            string player_num = conn_player_num(port);
+            int player_num = conn_player_num(port, true);
 
             dpp::embed info = dpp::embed()
                 .set_color(0x58D68D) // Mint-Grün

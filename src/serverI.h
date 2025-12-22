@@ -4,8 +4,7 @@
 
 #include <string>
 
-std::string exec_shell_cmd(const std::string cmd);
 std::string get_dIP(bool ipv6);
-std::string conn_player_num(const std::string port);
+int conn_player_num(const int port, bool ipv6);
 
 #endif // HEADER_INCLUED_
