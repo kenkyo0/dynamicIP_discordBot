@@ -34,22 +34,15 @@ click on 'Reset Token' to create your Bot-Token
 Execute the following set-up lines on your servers shell.
 ```bash
 git clone https://github.com/kenkyo0/dynamicIP_discordBot.git
-cd dynamicIP_discordBot/build
+cd dynamicIP_discordBot
+printf '{\n"bot_token": "<Your BOT-TOKEN>",\n"server_id": <your server ID>,\n"gameserver": {\n"ipv6": true,\n"port": "25565"\n}\n}' >> config.json
+cd /build
 cmake ../
 cd ../
 cmake --build build/ -j4
-touch config.json
 ```
 edit the file config.json with your specification like this:
 ```json
-{
-    "bot_token": "<Your BOT-TOKEN>",
-    "server_id": <your server ID>,
-    "gameserver": {
-        "ipv6": true,
-        "port": "25565"
-    }
-}
 ```
 You should have your BOT-TOKEN. You get the Discord Server ID by clicking 'right click' on your server name on the top left in discord, while being on your server.
 
