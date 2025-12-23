@@ -36,7 +36,7 @@ Execute the following set-up lines on your servers shell.
 git clone https://github.com/kenkyo0/dynamicIP_discordBot.git
 echo "..."
 sleep 3
-cd dynamicIP_discordBot
+cd dynamicIP_discordBot && mkdir build
 printf '{\n\t"bot_token": "<Your BOT-TOKEN>",\n\t"server_id": <your server ID>,\n\t"gameserver": {\n\t\t"ipv6": true,\n\t\t"port": "25565"\n\t}\n}' >> config.json
 cd build
 cmake ../
