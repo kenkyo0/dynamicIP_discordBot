@@ -4,12 +4,10 @@
  * such as the current public ip or the number of active clients by a specific port
  * */
 #include "serverI.h"
-#include <cstddef>
 #include <cstdio>
-#include <cstdlib>
 #include <fstream>
-#include <iomanip>
 #include <ios>
+#include <iostream>
 #include <sstream>
 #include <sys/socket.h>
 #include <netdb.h>
@@ -118,7 +116,7 @@ int conn_player_num(const int port, bool ipv6){
 
         if((correctp) && (count == 3)){
             p += 6; // skip the dest. port
-            if(std::strncmp(p, status, 2)){
+            if(std::strncmp(p, status, 2) == 2){
                 conns++;
             }
             correctp = false;
