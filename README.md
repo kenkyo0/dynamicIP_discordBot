@@ -41,10 +41,8 @@ cmake ../
 cd ../
 cmake --build build/ -j4
 ```
-edit the file config.json with your specification like this:
-```json
-```
-You should have your BOT-TOKEN. You get the Discord Server ID by clicking 'right click' on your server name on the top left in discord, while being on your server.
+edit the config.json file with your specification.
+You should have your BOT-TOKEN ([see here](### Get the Bot on your Discord server:). You get the Discord Server ID by clicking 'right click' on your server name on the top left in discord, while being on your server.
 
 **start your bot**
 ```bash
