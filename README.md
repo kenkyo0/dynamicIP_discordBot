@@ -37,10 +37,10 @@ git clone https://github.com/kenkyo0/dynamicIP_discordBot.git
 echo "..."
 sleep 3
 cd dynamicIP_discordBot
-printf '{\n"bot_token": "<Your BOT-TOKEN>",\n"server_id": <your server ID>,\n"gameserver": {\n"ipv6": true,\n"port": "25565"\n}\n}' >> config.json
+printf '{\n\t"bot_token": "<Your BOT-TOKEN>",\n\t"server_id": <your server ID>,\n\t"gameserver": {\n\t\t"ipv6": true,\n\t\t"port": "25565"\n\t}\n}' >> config.json
 cd build
 cmake ../
-cd ../
+cd ..
 cmake --build build/ -j4
 ```
 edit the config.json file with your specification.
