@@ -9,9 +9,9 @@ It's a really good alternative, if you don't want to buy a Domain-Name or use th
 Requirements for your server, where your bot should running on.
 - dpp libary - [install options](https://dpp.dev/installing.html)
 - cmake - install or your package-manager (recommended) or build it from a [download](https://cmake.org/download/)
-- build-essential
 
 ### Create your Discord Application-Token:
+You need this API-Token to run your own but bot.
 1. go to [https://discord.com/developers/applications]
 2. sign in with your Discord Account or create a new one
 3. click on the 'New Application' button on the top right (or where ever it is now)
@@ -44,7 +44,7 @@ cd ..
 cmake --build build/ -j4
 ```
 edit the config.json file with your specification.
-You should have your BOT-TOKEN ([see here](### Get the Bot on your Discord server:). You get the Discord Server ID by clicking 'right click' on your server name on the top left in discord, while being on your server.
+You should have your BOT-TOKEN. You get the Discord Server ID by clicking 'right click' on your server name on the top left in discord, while being on your server.
 
 **start your bot**
 ```bash
@@ -52,9 +52,11 @@ cd build/
 make
 ./Dynamic_DiscordBot
 ```
-If everything went the right way, you should see your Bot online on Discord.
-stop your bot with ctrl-c.
-You might have to wait a few minutes or seconds after the first start and stop of your bot, before the command /info is working. (Discord API is a bit slow)
-Then start your bot again and check if the command /info is working.
+If you are running the bot the first time or after changes, 
+you need to stop your bot with ctrl-c and wait 1-5 minutes.
+(This is because of the Discord Web-Socket or the Linux TCP-Socket TIME-WAIT)
 
-If the command not works restart the bot or if it still doesn't execute the command after some minutes, check the bot permissions you've set.
+If everything went the right way, you should see your Bot online on Discord.
+Check if the command /info is working.
+
+If the command not works, check the bot permissions you've set.
