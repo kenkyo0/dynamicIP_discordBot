@@ -4,6 +4,9 @@ This is a light-weight Discord Bot perfect for Game-Servers. The bot updates you
 provided by your isp.
 It's a really good alternative, if you don't want to buy a Domain-Name or use third-party services.
 
+**command:**  /info
+[![showcase](assets/showcase.png) ]
+
 ## Requirements
 
 Requirements for your server, where your bot should running on.
@@ -37,7 +40,7 @@ git clone https://github.com/kenkyo0/dynamicIP_discordBot.git
 echo "..."
 sleep 3
 cd dynamicIP_discordBot && mkdir build
-printf '{\n\t"bot_token": "<Your BOT-TOKEN>",\n\t"server_id": <your server ID>,\n\t"gameserver": {\n\t\t"ipv6": true,\n\t\t"port": 25565\n\t}\n}' > config.json
+printf '{\n\t"server_name": "<your personal server>"\n\t"description": "..."\n\t"bot_token": "<Your BOT-TOKEN>",\n\t"server_id": <your server ID>,\n\t"gameserver": {\n\t\t"ipv6": true,\n\t\t"port": 25565\n\t}\n}' > config.json
 cd build
 cmake ../
 cd ..
@@ -53,8 +56,8 @@ make
 ./Dynamic_DiscordBot
 ```
 If you are running the bot the first time or after changes, 
-you need to stop your bot with ctrl-c and wait 1-5 minutes.
-(This is because of the Discord Web-Socket or the Linux TCP-Socket TIME-WAIT)
+you might have to restart it one or a few times for being able to call commands.
+(This is because of the Discord Web-Socket Update or the Linux TCP-Socket TIME-WAIT)
 
 If everything went the right way, you should see your Bot online on Discord.
 Check if the command /info is working.

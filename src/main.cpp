@@ -22,18 +22,19 @@ int main () {
     }
 
     json config = json::parse(ifs);
+    const std::string server_name = config["server_name"].get<string>();
+    const std::string description = config["description"].get<string>();
     const std::string BOT_TOKEN = config["bot_token"].get<string>();
     const dpp::snowflake SERVER_ID = config["server_id"].get<dpp::snowflake>();
     bool ipv6b = config["gameserver"]["ipv6"].get<bool>();
     const int port = config["gameserver"]["port"].get<int>();
-
 
     // set up the bot
     dpp::cluster bot(BOT_TOKEN);
     bot.on_log(dpp::utility::cout_logger());
     
     // event trigger
-    bot.on_slashcommand([&bot, ipv6b, port](const dpp::slashcommand_t & event){
+    bot.on_slashcommand([&bot, ipv6b, port, server_name, description](const dpp::slashcommand_t & event){
 
         if(event.command.get_command_name() == "info"){
 
@@ -42,13 +43,13 @@ int main () {
 
             dpp::embed info = dpp::embed()
                 .set_color(0x58D68D) // Mint-Grün
-                .set_title("welcome in the flock of joy :)")
-                .set_description("follow the link, before you join")
-                .add_field(
-                        "vibe-check link:",
-                        "https://youtu.be/cIMKJ43TFLs?si=ru75W1TJV08EvrhC",
-                        true
-                )
+                .set_title(server_name)
+                .set_description(description)
+                //.add_field(
+                //        "vibe-check link:",
+                //        "https://youtu.be/cIMKJ43TFLs?si=ru75W1TJV08EvrhC",
+                //        true
+                //)
                 .add_field(
                         "IP:",
                         ip
