@@ -5,7 +5,8 @@ provided by your isp.
 It's a really good alternative, if you don't want to buy a Domain-Name or use third-party services.
 
 **command:**  /info
-[![showcase](assets/showcase.png) ]
+
+![showcase](assets/showcase.png)
 
 ## Requirements
 
